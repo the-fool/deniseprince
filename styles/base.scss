@@ -1,0 +1,131 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  padding: 30px 60px;
+  max-width: 1800px;
+  margin: auto;
+  @media (max-width: 600px) {
+    padding: 25px;
+  }
+}
+
+body * {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Nunito', sans-serif;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  #logo {
+    margin-right: 30px;
+    text-transform: uppercase;
+  }
+  nav {
+    font-family: "europa";
+    text-transform: none;
+    letter-spacing: .06em;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    ul {
+      list-style: none;
+      list-style-image: none;
+      margin: 0;
+      padding: 0;
+      li {
+        float: left;
+        margin-right: 30px;
+        position: relative;
+        font-family: 'Nunito', sans-serif;
+        a {
+          text-decoration: none;
+          text-transform: lowercase;
+          font-family: inherit;
+          color: #9c9c9c;
+          &:hover {
+            color: #000;
+          }
+        }
+      }
+    }
+  }
+}
+
+$img-gap: 40px;
+$img-gap-small: 10px;
+.photo-grid {
+  /* Prevent vertical gaps */
+  line-height: 0;
+  column-count: 3;
+  column-gap: $img-gap;
+  .photo-grid-image {
+    position: relative;
+    cursor: pointer;
+    .photo-grid-title {
+      position: absolute;
+      top: calc(50% - #{$img-gap/2});
+      width: 100%;
+      text-align: center;
+      opacity: 0;
+      color: #fff;
+    }
+    img {
+      /* Just in case there are inline attributes */
+      width: 100% !important;
+      margin: 0 0 $img-gap 0;
+      height: auto !important;
+    }
+    &:hover {
+      img {
+        filter: brightness(0.2);
+      }
+      .photo-grid-title {
+        opacity: 1;
+      }
+    }
+  }
+  @media (max-width: 1200px) {
+    column-count: 2;
+  }
+  @media (max-width: 700px) {
+    column-gap: $img-gap-small;
+    column-count: 1;
+    .photo-grid-title {
+      top: calc(50% - #{$img-gap-small/2});
+    }
+    img {
+      margin: $img-gap-small/2 0;
+    }
+  }
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+  /* Create four equal columns that sits next to each other */
+  .column {
+    flex: 25%;
+    max-width: 25%;
+    padding: 0 4px;
+    img {
+      margin-top: 8px;
+      vertical-align: middle;
+    }
+  }
+}
